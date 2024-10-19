@@ -17,7 +17,7 @@ useSeoMeta({
     <h1>Products</h1>
     <p>
       Browse our products and find the best deals. It's not a promise. It's a
-      guarantee!
+      guarantee!d
     </p>
   </header>
   <section class="site-section">
