@@ -22,10 +22,17 @@ const { items } = useCart();
                 >
                     <NuxtLink to="/products">Products</NuxtLink>
                 </li>
+
                 <li
                     class="site-nav__item cursor-pointer text-gray-500 hover:text-black"
                 >
                     <NuxtLink to="/cart">Cart - {{ items.length }}</NuxtLink>
+                </li>
+                <li
+                    class="site-nav__item flex items-center gap-3 text-gray-500 hover:text-black"
+                >
+                    <img src="../assets/drawer.svg" alt="" />
+                    <NuxtLink to="/cart">Drawer</NuxtLink>
                 </li>
                 <li
                     class="site-nav__item flex items-center gap-3 text-gray-500 hover:text-black"

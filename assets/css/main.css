@@ -6,6 +6,10 @@
 @tailwind components;
 @tailwind utilities;
 
+body {
+    background-color: rgb(247, 254, 231);
+}
+
 .btn {
     @apply rounded-xl border border-green-700 bg-green-600 p-4 py-2 font-medium text-green-200 shadow-inner shadow-green-400  active:shadow-green-700;
 
