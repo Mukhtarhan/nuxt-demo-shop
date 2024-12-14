@@ -1,9 +1,8 @@
 <script setup>
-    import { inject } from 'vue'
+import { inject } from "vue";
 
-    const isopen = inject('isopen')
-    const { items } = useCart();
-
+const isopen = inject("isopen");
+const { items } = useCart();
 </script>
 
 <template>
@@ -38,11 +37,18 @@
             </svg>
             Корзина
         </h2>
-        <div class="flex flex-col flex-1 justify-between" v-if = "items.length == 0">
-            Корзина пуста
+        <div
+            class="flex flex-col flex-1 justify-between"
+            v-if="items.length == 0"
+        >
+            <span>Корзина пуста</span>
         </div>
-        <div class="flex flex-col flex-1 justify-between" v-else = "">
-            <div class="flex flex-col gap-5" v-for = "item in items" :key="item.product.id">
+        <div class="flex flex-col flex-1 justify-between" v-else>
+            <div
+                class="flex flex-col gap-5"
+                v-for="item in items"
+                :key="item.product.id"
+            >
                 <CartItem :item="item" />
             </div>
             <div>
@@ -50,14 +56,18 @@
                     <div class="flex items-end gap-2">
                         <span>Итого:</span>
                         <div class="flex-1 border-b border-dashed" />
-                        <span class="font-bold">{{
-                            formatPrice(
-                            items.reduce(
-                                (acc, item) => acc + item.product.price * item.quantity,
-                                0
-                            )
-                            )
-                        }}.</span>
+                        <span class="font-bold"
+                            >{{
+                                formatPrice(
+                                    items.reduce(
+                                        (acc, item) =>
+                                            acc +
+                                            item.product.price * item.quantity,
+                                        0
+                                    )
+                                )
+                            }}.</span
+                        >
                     </div>
 
                     <div class="flex items-end gap-2">
@@ -65,16 +75,19 @@
                         <div class="flex-1 border-b border-dashed" />
                         <span class="font-bold">{{
                             formatPrice(
-                            items.reduce(
-                                (acc, item) => acc + item.product.price * item.quantity,
-                                0
-                            ) * 1.05
+                                items.reduce(
+                                    (acc, item) =>
+                                        acc +
+                                        item.product.price * item.quantity,
+                                    0
+                                ) * 1.05
                             )
                         }}</span>
                     </div>
                 </div>
 
-                <button v-if="items.length > 0"
+                <button
+                    v-if="items.length > 0"
                     class="flex justify-center items-center gap-3 w-full py-3 mt-10 bg-lime-500 text-white rounded-xl transition active:bg-lime-700 hover:bg-lime-600"
                 >
                     <NuxtLink to="/cart">Оформить заказ</NuxtLink>

@@ -48,10 +48,10 @@ useSeoMeta({
 </script>
 <template>
     <NuxtLayout>
-        <div class="bg-white max-w-7xl mx-auto mt-14">
-            <NuxtLoadingIndicator />
-            <NuxtPage />
-            <Drawer v-if="isopen" />
-        </div>
+        <!-- <div class="bg-white max-w-7xl mx-auto mt-14"> -->
+        <NuxtLoadingIndicator />
+        <NuxtPage />
+        <Drawer v-if="isopen" />
+        <!-- </div> -->
     </NuxtLayout>
 </template>
