@@ -2,8 +2,10 @@
 <script setup lang="ts">
 import Drawer from "./components/Drawer.vue";
 
+let isopen = ref(false);
 const title = ref("Nuxt Shop");
 const description = ref("A simple shop built with Nuxt.");
+provide("isopen", isopen);
 useHead({
     titleTemplate: (titleChunk) => {
         return titleChunk ? `${titleChunk} - Nuxt Shop` : "Nuxt Shop";
@@ -46,10 +48,10 @@ useSeoMeta({
 </script>
 <template>
     <NuxtLayout>
-        <!-- <div class="bg-white max-w-7xl mx-auto mt-14"> -->
-        <NuxtLoadingIndicator />
-        <NuxtPage />
-        <!-- <Drawer /> -->
-        <!-- </div> -->
+        <div class="bg-white max-w-7xl mx-auto mt-14">
+            <NuxtLoadingIndicator />
+            <NuxtPage />
+            <Drawer v-if="isopen" />
+        </div>
     </NuxtLayout>
 </template>
