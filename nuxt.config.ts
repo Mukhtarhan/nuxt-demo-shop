@@ -1,35 +1,41 @@
 // ./nuxt.config.ts
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-  devtools: { enabled: true },
-  modules: ["@nuxtjs/tailwindcss", "@nuxt/content", "@nuxthq/studio",'@pinia/nuxt'],
+    devtools: { enabled: true },
+    modules: [
+        "@nuxtjs/tailwindcss",
+        "@nuxt/content",
+        "@nuxthq/studio",
+        "@pinia/nuxt",
+        "@formkit/auto-animate/nuxt",
+    ],
 
-  nitro: {
-    prerender: {
-      routes: ["/", "/blog"],
+    nitro: {
+        prerender: {
+            routes: ["/", "/blog"],
+        },
     },
-  },
 
-  routeRules: {
-    "/products/**": { ssr: true },
-    "/checkout/**": { ssr: false },
-  },
+    routeRules: {
+        "/products/**": { ssr: true },
+        "/checkout/**": { ssr: false },
+    },
 
-  css: ["~/assets/css/main.css", "vue-toastification/dist/index.css"],
-  build: { transpile: ["vue-toastification"] },
+    css: ["~/assets/css/main.css", "vue-toastification/dist/index.css"],
+    build: { transpile: ["vue-toastification"] },
 
-  content: {
-    // https://content.nuxtjs.org/api/configuration
-  },
+    content: {
+        // https://content.nuxtjs.org/api/configuration
+    },
 
-  extends: [
-    // "../base-layer",
-    "@miracleio/my-nuxt-layer",
-  ],
+    extends: [
+        // "../base-layer",
+        "@miracleio/my-nuxt-layer",
+    ],
 
-  pinia: {
-    autoImports: ['defineStore'], // Automatically import defineStore
-  },
+    pinia: {
+        autoImports: ["defineStore"], // Automatically import defineStore
+    },
 
-  compatibilityDate: "2024-12-14",
+    compatibilityDate: "2024-12-14",
 });
