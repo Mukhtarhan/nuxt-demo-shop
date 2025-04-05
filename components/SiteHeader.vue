@@ -1,10 +1,13 @@
 <script setup lang="ts">
 import { useCart } from "@/composables/useCart";
 import { useAuthStore } from "../store/authStore";
+import { inject } from 'vue'
 
 const { items } = useCart();
 const showAuthModal = ref(false);
 const authStore = useAuthStore();
+const isopen = inject('isopen')
+
 
 const openAuthModal = () => (showAuthModal.value = true);
 const closeAuthModal = () => (showAuthModal.value = false);
@@ -35,12 +38,16 @@ const closeAuthModal = () => (showAuthModal.value = false);
           class="site-nav__item flex items-center gap-3 text-gray-500 hover:text-purple-600 relative"
         >
           <img src="../assets/drawer.svg" alt="" />
+<<<<<<< HEAD
           <span
             v-if="authStore.isAuthenticated"
             class="absolute text-[12px] px-1 bottom-3 left-4 rounded text-white bg-purple-600"
             >{{ items.length }}</span
           >
           <NuxtLink to="/cart">Cart</NuxtLink>
+=======
+          <NuxtLink @click="isopen = !isopen">Drawer</NuxtLink>
+>>>>>>> cb5dd41b38c1d9dcf55ab037f70cfffdcb5083ea
         </li>
 
         <li
