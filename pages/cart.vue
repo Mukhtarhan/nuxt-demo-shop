@@ -1,6 +1,9 @@
 <!-- ./pages/cart.vue -->
 
 <script setup lang="ts">
+definePageMeta({
+  middleware: "auth",
+});
 const { items } = useCart();
 
 useSeoMeta({

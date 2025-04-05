@@ -1,6 +1,4 @@
 // ./stores/authStore.ts
-import { defineStore } from "pinia";
-
 export const useAuthStore = defineStore("auth", {
   state: () => ({
     isAuthenticated: false,
@@ -14,6 +12,9 @@ export const useAuthStore = defineStore("auth", {
     logout() {
       this.isAuthenticated = false;
       this.user = null;
+    },
+    updateUser(updatedUser) {
+      this.user = updatedUser;
     },
   },
 });

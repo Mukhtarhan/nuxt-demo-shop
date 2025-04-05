@@ -1,7 +1,8 @@
 <script setup lang="ts">
 import { useToast } from "vue-toastification";
-const route = useRoute();
 const toast = useToast();
+const route = useRoute();
+
 const { addToCart } = useCart();
 const id = route.params.id;
 

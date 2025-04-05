@@ -46,7 +46,7 @@ useSeoMeta({
 </script>
 <template>
   <NuxtLayout>
-    <div class="bg-white max-w-7xl mx-auto mt-14">
+    <div class="bg-white">
       <NuxtLoadingIndicator />
       <NuxtPage />
       <!-- <Drawer /> -->

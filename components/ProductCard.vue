@@ -2,9 +2,10 @@
 
 <script setup lang="ts">
 import { useToast } from "vue-toastification";
+import { useAuthStore } from "../../store/authStore";
 const { addToCart } = useCart();
 const toast = useToast();
-
+const authStore = useAuthStore();
 defineProps({
   product: {
     type: Object as PropType<Product>,
@@ -13,6 +14,11 @@ defineProps({
 });
 
 const handleAddToCart = (product: Product) => {
+  if (!authStore.isAuthenticated) {
+    toast.error("Please log in to add items to your cart!");
+    return;
+  }
+
   addToCart(product);
   toast.success(`${product.title} added to cart!`);
 };

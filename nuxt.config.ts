@@ -2,7 +2,7 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   devtools: { enabled: true },
-  modules: ["@nuxtjs/tailwindcss", "@nuxt/content", "@nuxthq/studio",'@pinia/nuxt'],
+  modules: ["@nuxtjs/tailwindcss","@formkit/auto-animate/nuxt", "@nuxt/content", "@nuxthq/studio",'@pinia/nuxt'],
 
   nitro: {
     prerender: {

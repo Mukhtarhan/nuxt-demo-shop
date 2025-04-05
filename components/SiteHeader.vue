@@ -21,31 +21,31 @@ const closeAuthModal = () => (showAuthModal.value = false);
     <nav class="site-nav">
       <ul class="site-nav__list">
         <li
-          class="site-nav__item cursor-pointer text-gray-500 hover:text-black"
+          class="site-nav__item cursor-pointer text-gray-500 hover:text-purple-600"
         >
           <NuxtLink to="/blog">Blog</NuxtLink>
         </li>
         <li
-          class="site-nav__item cursor-pointer text-gray-500 hover:text-black"
+          class="site-nav__item cursor-pointer text-gray-500 hover:text-purple-600"
         >
           <NuxtLink to="/products">Products</NuxtLink>
         </li>
 
         <li
-          class="site-nav__item cursor-pointer text-gray-500 hover:text-black"
-        >
-          <NuxtLink to="/cart">Cart - {{ items.length }}</NuxtLink>
-        </li>
-        <li
-          class="site-nav__item flex items-center gap-3 text-gray-500 hover:text-black"
+          class="site-nav__item flex items-center gap-3 text-gray-500 hover:text-purple-600 relative"
         >
           <img src="../assets/drawer.svg" alt="" />
-          <NuxtLink to="/cart">Drawer</NuxtLink>
+          <span
+            v-if="authStore.isAuthenticated"
+            class="absolute text-[12px] px-1 bottom-3 left-4 rounded text-white bg-purple-600"
+            >{{ items.length }}</span
+          >
+          <NuxtLink to="/cart">Cart</NuxtLink>
         </li>
 
         <li
           v-if="authStore.isAuthenticated"
-          class="site-nav__item flex items-center gap-3 text-gray-500 hover:text-black"
+          class="site-nav__item flex items-center gap-3 text-gray-500 hover:text-purple-600"
         >
           <img src="../assets/Union.svg" alt="" />
           <NuxtLink to="/profile">Profile</NuxtLink>
@@ -53,7 +53,7 @@ const closeAuthModal = () => (showAuthModal.value = false);
         <li
           v-else
           @click="openAuthModal"
-          class="site-nav__item flex items-center gap-3 text-gray-500 hover:text-black"
+          class="site-nav__item cursor-pointer flex items-center gap-3 text-gray-500 hover:text-purple-600"
         >
           <img src="../assets/Union.svg" alt="" />
           <NuxtLink>Login</NuxtLink>

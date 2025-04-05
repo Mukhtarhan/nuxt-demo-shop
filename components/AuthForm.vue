@@ -5,9 +5,11 @@
         class="close-btn text-black font-bold hover:text-purple-600"
         @click="closeModal"
       >
-        ✖
+        x
       </button>
-      <h2 class="text-xl font-semibold mb-4">
+      <h2
+        class="text-xl font-semibold mb-4 flex items-center gap-2 justify-center"
+      >
         {{
           isSignIn
             ? "Sign In"
@@ -25,7 +27,10 @@
         @submit.prevent="handleSubmit"
       >
         <div class="form-group">
-          <label for="email">Email</label>
+          <label for="email" class="flex items-center gap-2">
+            <font-awesome-icon icon="envelope" class="text-purple-600" />
+            Email
+          </label>
           <input
             type="email"
             id="email"
@@ -35,7 +40,10 @@
           />
         </div>
         <div class="form-group">
-          <label for="password">Password</label>
+          <label for="password" class="flex items-center gap-2">
+            <font-awesome-icon icon="lock" class="text-purple-600" />
+            Password
+          </label>
           <input
             type="password"
             id="password"
@@ -47,7 +55,10 @@
 
         <!-- Confirm Password Field -->
         <div v-if="!isSignIn" class="form-group">
-          <label for="confirmPassword">Confirm Password</label>
+          <label for="confirmPassword" class="flex items-center gap-2">
+            <font-awesome-icon icon="lock" class="text-purple-600" />
+            Confirm Password
+          </label>
           <input
             type="password"
             id="confirmPassword"
@@ -59,28 +70,40 @@
 
         <button
           type="submit"
-          class="form-btn bg-purple-600"
+          class="form-btn bg-purple-600 flex items-center justify-center gap-2"
           :disabled="loading"
         >
+          <font-awesome-icon icon="lock" class="text-white" v-if="isSignIn" />
+          <font-awesome-icon icon="user-plus" class="text-white" v-else />
           {{ loading ? "Processing..." : isSignIn ? "Sign In" : "Sign Up" }}
         </button>
       </form>
 
       <!-- Confirmation Code -->
-      <div v-if="confirmStage" class="form-group">
-        <label for="code">Enter Confirmation Code</label>
-        <input
-          type="text"
-          id="code"
-          v-model="form.confirmCode"
-          placeholder="Enter code"
-          required
-        />
+      <div
+        v-if="confirmStage"
+        class="form-group flex flex-col items-center gap-4"
+      >
+        <div class="w-full">
+          <label for="code" class="flex items-center gap-2">
+            <font-awesome-icon icon="key" class="text-purple-600" />
+            Enter Confirmation Code
+          </label>
+          <input
+            type="text"
+            id="code"
+            v-model="form.confirmCode"
+            placeholder="Enter code"
+            required
+          />
+        </div>
+
         <button
-          class="form-btn bg-purple-600"
+          class="form-btn bg-purple-600 flex items-center justify-center gap-2"
           @click="handleConfirmCode"
           :disabled="loading"
         >
+          <font-awesome-icon icon="key" class="text-white" />
           Confirm
         </button>
       </div>
@@ -90,8 +113,16 @@
         v-if="successStage"
         class="form-success gap-6 flex flex-col items-center"
       >
+        <font-awesome-icon
+          icon="check-circle"
+          class="text-purple-600 w-20 h-20"
+        />
         <p>Your account has been created successfully.</p>
-        <button class="form-btn bg-purple-600" @click="goToLogin">
+        <button
+          class="form-btn bg-purple-600 flex items-center justify-center gap-2"
+          @click="goToLogin"
+        >
+          <font-awesome-icon icon="sign-in-alt" class="text-white" />
           Go to Login
         </button>
       </div>
@@ -158,7 +189,7 @@ const handleSubmit = async () => {
       );
       if (user) {
         authStore.login(user);
-        router.push("/profile");
+        router.push("/");
         closeModal();
       } else {
         errorMessage.value = "Invalid email or password.";
@@ -189,6 +220,10 @@ const handleConfirmCode = async () => {
       name: "New User",
       username: form.value.email,
       password: form.value.password,
+      name: "",
+      surname: "",
+      age: 0,
+      products: [],
     });
     successStage.value = true;
     confirmStage.value = false;
@@ -248,6 +283,7 @@ const goToLogin = () => toggleAuthMode();
 
 .form-btn {
   color: white;
+  width: 100%;
   border: none;
   padding: 0.5rem 40px;
   border-radius: 10px;
